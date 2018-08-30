@@ -1,0 +1,54 @@
+# -*- mode: shell-script; -*-
+#
+#   Coova-Chilli Default Configurations.
+#   To customize, copy this file to /etc/chilli/config
+#   and edit to your liking. This is included in shell scripts
+#   that configure chilli and related programs before file 'config'.
+
+
+HS_WANIF=`uci -P/var/state get network.wan.ifname`
+HS_LANIF=`ifconfig | grep wl | sort | head -1 | cut -d " " -f1`
+#HS_LANIF=`uci -P/var/state get network.lan.ifname`
+
+#HS_NETWORK=172.16.17.0
+HS_NETWORK=`uci get network.lan.ipaddr | awk -F\. '{ print $1"."$2+1"."$3".0" }'`
+HS_NETMASK=255.255.255.0
+#HS_UAMLISTEN=172.16.17.1
+HS_UAMLISTEN=`uci get network.lan.ipaddr | awk -F\. '{ print $1"."$2+1"."$3".1" }'`
+HS_UAMPORT=8000
+HS_DNS1=`uci get network.lan.ipaddr`
+HS_DNS2=8.8.8.8
+#CONFIG_NASID
+HS_NASID=wiads_nasid
+#CONFIG_RADIUS
+HS_RADIUS=auth.hotspotwifisystem.com
+#CONFIG_RADIUS2
+HS_RADIUS2=auth2.hotspotwifisystem.com
+#CONFIG_UAMALLOW
+HS_UAMALLOW=172.16.16.1,172.16.17.1,125.212.233.15,wiads.vn,enter.wiads.vn,auth.wiads.vn,fpt.auth.wiads.vn,8.8.8.8,8.8.4.4,208.67.222.222
+HS_RADSECRET=auth_9stub_09123
+HS_UAMSECRET=auth_9stub_09123
+HS_UAMALIASNAME=hotspotwifi
+#CONFIG_UAMDOMAINS
+HS_UAMDOMAINS='.wiads.vn,.hotspotwifisystem.com,meganet.com.vn,.meganet.com.vn,.valuepotion.com,valuepotion.com,daumcdn.net,.daumcdn.net,bs.serving-sys.com,junoteam.com,.junoteam.com,.facebook.com,.facebook.net,.akamaitechnologies.com,.akamaihd.net,.akamaiedge.net,.akamaitechnologies.com,.fbcdn.net,.gstatic.com,.android.com,.google-analytics.com'
+HS_UAMSERVER=$HS_UAMLISTEN
+#CONFIG_UAMFORMAT
+HS_UAMFORMAT=http://enter.wiads.vn/ap
+#CONFIG_UAMHOMEPAGE
+HS_UAMHOMEPAGE=http://\$HS_UAMLISTEN:\$HS_UAMPORT/www/connect.html
+#CONFIG_REDIRSSL
+#HS_REDIRSSL=on
+#HS_SSLKEYFILE=/etc/chilli/sslcert.key
+#HS_SSLCERTFILE=/etc/chilli/sslcert.pem
+#CONFIG_MACAUTH
+HS_MACAUTH=off
+HS_TCP_PORTS="22 23 80 443 8020 8021"
+HS_MODE=hotspot
+HS_TYPE=chillispot
+HS_PROVIDER=HotSpotWifiSystem
+HS_PROVIDER_LINK=http://hotspotwifisystem.com/
+HS_LOC_NAME="HotSpot Wifi System"
+#HS_UAMPORT=3990            # HotSpot UAM Port (on subscriber network)
+HS_UAMUIPORT=4990          # HotSpot UAM "UI" Port (on subscriber network, for embedded portal)
+HS_WWWBIN=/etc/chilli/wwwsh
+HS_WWWDIR=/etc/chilli/www

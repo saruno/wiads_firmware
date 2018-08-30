@@ -1,0 +1,21 @@
+#!/bin/sh /etc/rc.common
+# - init script for chilli -
+
+START=96
+STOP=90
+
+NAME=chilli
+
+start() {
+    echo "===Chilli Start. Do nothing"
+}
+
+boot() {
+    echo "===Chilli Boot. Do nothing"
+}
+
+stop() {
+    echo "===Chilli Stop. Do nothing"
+}
+
+
