@@ -1,0 +1,34 @@
+*) PRIVATE DHCP
+
+TL WR941ND v6 
+
+make image PROFILE=TLWR941 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files941ndv6/
+
+TL WR740N/ND v5 
+
+make image PROFILE=TLWR740 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files740nv5/
+
+TL WR840N v4
+
+make image PROFILE=tl-wr840n-v4 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files840n/
+
+*) BRIDGE
+
+TL WR941ND v6 Bridge
+
+make image PROFILE=TLWR941 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files941ndv6-bridge/
+
+TL WR740N/ND v5 Bridge
+
+make image PROFILE=TLWR740 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files740nv5-bridge/
+
+TL WR840N v4
+
+make image PROFILE=tl-wr840n-v4 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files840n-bridge/
+
+*) Build Pacakge Wiads_daemon
+
+~/openwrt/OpenWrt-SDK-ar71xx-generic_gcc-5.3.0_musl-1.1.16.Linux-x86_64$ make package/wiads_daemon/compile V=99
+
+~/openwrt/OpenWrt-SDK-ar71xx-generic_gcc-5.3.0_musl-1.1.16.Linux-x86_64/bin/ar71xx/packages/base$ scp -P 8020 wiads_daemon_1.0.0-1_ar71xx.ipk root@172.16.16.1:/tmp/
+
