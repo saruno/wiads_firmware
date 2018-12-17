@@ -26,6 +26,28 @@ TL WR840N v4
 
 make image PROFILE=tl-wr840n-v4 PACKAGES="uhttpd uhttpd-mod-lua coova-chilli iwinfo wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp" FILES=files840n-bridge/
 
+*) No Chilli SQM Qos
+
+TL WR941ND v6 Bridge
+
+make image PROFILE=TLWR941 PACKAGES="uhttpd uhttpd-mod-lua sqm-scripts wiads_daemon wiads_mqtt -opkg -ppp -ppp-mod-pppoe -luci-proto-ppp -ip6tables -odhcp6c -kmod-ipv6 -kmod-ip6tables" FILES=files941ndv6-bridge/
+
+TL WR940N v4 Bridge
+
+make image PROFILE=tl-wr940n-v4 PACKAGES="uhttpd uhttpd-mod-lua sqm-scripts wiads_daemon wiads_mqtt -opkg -ppp -ppp-mod-pppoe -luci-proto-ppp -ip6tables -odhcp6c -kmod-ipv6 -kmod-ip6tables" FILES=files941ndv6-bridge/
+
+TL WR740N/ND v5 Bridge
+
+make image PROFILE=tl-wr740n-v5 PACKAGES="uhttpd uhttpd-mod-lua sqm-scripts wiads_daemon wiads_mqtt -opkg -ppp -ppp-mod-pppoe -luci-proto-ppp -ip6tables -odhcp6c -kmod-ipv6 -kmod-ip6tables" FILES=files740nv5-bridge/
+
+TL WR840N v4
+
+make image PROFILE=tl-wr840n-v4 PACKAGES="uhttpd uhttpd-mod-lua sqm-scripts wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp -ip6tables -odhcp6c -kmod-ipv6 -kmod-ip6tables" FILES=files840n-bridge/
+
+TL c20 v4
+
+make image PROFILE=tplink_c20-v4 PACKAGES="uhttpd uhttpd-mod-lua sqm-scripts wiads_daemon wiads_mqtt -ppp -ppp-mod-pppoe -luci-proto-ppp -ip6tables -odhcp6c -kmod-ipv6 -kmod-ip6tables" FILES=filesc20v4-bridge/
+
 *) Build Pacakge Wiads_daemon
 
 ~/openwrt/OpenWrt-SDK-ar71xx-generic_gcc-5.3.0_musl-1.1.16.Linux-x86_64$ make package/wiads_daemon/compile V=99

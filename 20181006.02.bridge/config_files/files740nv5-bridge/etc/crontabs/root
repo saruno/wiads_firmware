@@ -1,0 +1,7 @@
+# Reboot at 4:30am every day
+# Note: To avoid infinite reboot loop, wait 70 seconds
+# and touch a file in /etc so clock will be set
+# properly to 4:31 on reboot before cron starts.
+30 4 * * * sleep 70 && touch /etc/banner && reboot
+*/3 * * * * /root/manage_hosts.sh add router.lan
+*/3 * * * * /root/mqtt_control.sh start
